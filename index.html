@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>论文/书籍阅读器</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PDF.js -->
+  <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.7.76/pdf.min.mjs"></script>
+
+  <!-- epub.js（必须放在 viewer.js 之前） -->
+  <script type="module">
+    import ePub from "https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js";
+    window.ePub = ePub;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>OS Chengdu 论文 & 书籍</h1>
+      <a href="../index.html" class="back">← 返回主页</a>
+    </header>
+
+    <div class="book-grid" id="bookGrid">
+      <!-- JS 动态生成 -->
+    </div>
+
+    <!-- 阅读器模态框 -->
+    <div class="viewer-modal" id="viewerModal">
+      <div class="viewer-header">
+        <button class="close-btn" id="closeBtn">×</button>
+        <h2 id="bookTitle"></h2>
+      </div>
+      <div id="viewer"></div>
+      <div class="viewer-footer">
+        <button id="prevBtn">‹ 上一页</button>
+        <span id="pageInfo"></span>
+        <button id="nextBtn">下一页 ›</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

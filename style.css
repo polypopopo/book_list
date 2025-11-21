@@ -1,0 +1,142 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background: #f7f9fc;
+  color: #333;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+header h1 { font-size: 2rem; }
+.back {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.back:hover { text-decoration: underline; }
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.book-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+.book-cover {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  background: #f0f0f0;
+  padding: 1rem;
+}
+.book-title {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* 模态阅读器 */
+.viewer-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 9999;
+  flex-direction: column;
+}
+.viewer-modal.active { display: flex; }
+
+.viewer-header {
+  background: #222;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+}
+#bookTitle { flex: 1; font-size: 1.3rem; }
+
+#viewer {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+#viewer canvas {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.viewer-footer {
+  background: #222;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.viewer-footer button {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.viewer-footer button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+#pageInfo { min-width: 120px; }
+/* epub.js 专用样式 */
+#viewer iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* epub.js 翻页按钮美化（可选） */
+.epub-container .arrow {
+  opacity: 0.6;
+}
+.epub-container .arrow:hover {
+  opacity: 1;
+}
+.book-card canvas {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
